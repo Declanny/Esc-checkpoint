@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic Math Operations</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  .container {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  input[type="text"], input[type="number"] {
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 200px;
+    box-sizing: border-box;
+  }
+  button {
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  #result {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>Basic Math Operations</h2>
+  <input type="text" id="operation" placeholder="Enter operation (+, -, *, /)">
+  <br>
+  <input type="number" id="value1" placeholder="Enter value 1">
+  <br>
+  <input type="number" id="value2" placeholder="Enter value 2">
+  <br>
+  <button onclick="calculate()">Calculate</button>
+  <div id="result"></div>
+</div>
+
+<script>
+  function basicOp(operation, value1, value2){
+    switch(operation) {
+      case '+':
+        return value1 + value2;
+      case '-':
+        return value1 - value2;
+      case '*':
+        return value1 * value2;
+      case '/':
+        return value1 / value2;
+      default:
+        return NaN; // Return NaN for invalid operations
+    }
+  }
+
+  function calculate() {
+    var operation = document.getElementById("operation").value;
+    var value1 = parseInt(document.getElementById("value1").value);
+    var value2 = parseInt(document.getElementById("value2").value);
+    
+    var resultDiv = document.getElementById("result");
+    if (!isNaN(value1) && !isNaN(value2)) {
+      var result = basicOp(operation, value1, value2);
+      resultDiv.innerText = "Result: " + result;
+    } else {
+      resultDiv.innerText = "Invalid input!";
+    }
+  }
+</script>
+</body>
+</html>
